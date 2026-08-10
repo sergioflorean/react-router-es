@@ -1,6 +1,6 @@
 // Review.tsx
 
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import type {ReviewData} from '../ReviewInterface.ts';
 import './Review.css';
 
@@ -9,7 +9,7 @@ interface ReviewProps {
 }
 function Review({ reviews }: ReviewProps): React.JSX.Element {
   const params = useParams<{ reviewId: string }>();
-
+  const navigate = useNavigate();
   // Convertimos el parámetro de string a número de forma segura.
   // Si params.reviewId existe, lo parseamos y le restamos 1.
   // Si por alguna razón es undefined, le asignamos 0 como seguridad.
@@ -23,6 +23,9 @@ function Review({ reviews }: ReviewProps): React.JSX.Element {
           <h3>{reviews[id]?.title}</h3>
           <p>{reviews[id]?.text}</p>
           <p className='review__rating'>Calificación final: {reviews[id]?.rating}/5</p>
+          <button type='button' onClick={() => navigate('/reviews')} className='review__back-button'>
+            Volver a la lista de reseñas
+          </button>
         </div>
       )}
     </div>
