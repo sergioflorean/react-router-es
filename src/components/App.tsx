@@ -12,6 +12,7 @@ import Hobbies from "./AboutMe/Hobbies";
 import SiteHistory from "./AboutUs/SiteHistory";
 import SiteMission from "./AboutUs/SiteMission";
 import Review from "./Review/Review";
+import PageNotFound from "./PageNotFound/PageNotFound";
 import type { ReviewData } from "./ReviewInterface"; // Importamos la interfaz de reseñas
 
 
@@ -52,6 +53,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
+        <Route path="*" element={<PageNotFound />} />
         <Route path="/" element={<Dashboard />} />
         <Route path="/reviews" element={<Reviews reviews={reviews} />} />
         <Route path="/reviews/:reviewId" element={<Review reviews={reviews} />} />
